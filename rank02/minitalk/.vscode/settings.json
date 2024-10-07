@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "types.h": "c",
+        "wait.h": "c",
+        "stdio.h": "c",
+        "unistd.h": "c",
+        "libft.h": "c",
+        "stdlib.h": "c",
+        "signal.h": "c"
+    }
+}
