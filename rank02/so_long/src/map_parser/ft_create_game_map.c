@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_create_game_map.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bschwell <student@42.fr>                   +#+  +:+       +#+        */
+/*   By: bschwell <bschwell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 11:02:24 by bschwell          #+#    #+#             */
-/*   Updated: 2024/10/07 14:47:49 by bschwell         ###   ########.fr       */
+/*   Updated: 2024/10/08 11:37:17 by bschwell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,12 @@ void	ft_create_game_map(char *file, t_map *map)
 	map_str = NULL;
 	lines_total = 0;
 	fd = ft_open_map_file(file);
-	if (fd == -1)
-		ft_free_map_and_exit(map);
 	line = ft_get_next_line(fd);
+	if (fd == -1 || line == NULL)
+	{
+		ft_print_err(ERROR_READ);
+		ft_free_map_and_exit(map);
+	}
 	while (line)
 	{
 		lines_total++;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bschwell <student@42.fr>                   +#+  +:+       +#+        */
+/*   By: bschwell <bschwell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 11:21:27 by bschwell          #+#    #+#             */
-/*   Updated: 2024/10/07 15:52:49 by bschwell         ###   ########.fr       */
+/*   Updated: 2024/10/08 11:45:06 by bschwell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,35 +121,34 @@ void	ft_check_won(t_game *game, int x, int y);
 void	ft_update_move_count(t_game *game);
 int		ft_check_move(t_game *game, int x, int y);
 
-# define ERROR_READ "unsuccessfull file read\n"
-# define ERROR_RECTANGLE "map must be a rectangle\n"
-# define ERROR_EMPTY_LINE "map has an empty line\n"
-# define ERROR_WALLS "map must be surrounded by walls\n"
-# define ERROR_GAME_INIT "game initialization failed\n"
-# define ERROR_NO_ARG "no arguments"
-# define ERROR_COL_ROW "map has less than 3 rows and/or 3 columns\n"
-# define ERROR_EXIT "you must have exactly one exit\n"
-# define ERROR_PLAYER "you must have exactly one player\n"
-# define ERROR_COLLECT "you need at least one collectable\n"
-# define ERROR_CHARS "map has invalid characters.\
+# define ERROR_READ "Unsuccessfull file read\n"
+# define ERROR_RECTANGLE "Map must be a rectangle\n"
+# define ERROR_EMPTY_LINE "Map has an empty line\n"
+# define ERROR_WALLS "Map must be surrounded by walls\n"
+# define ERROR_GAME_INIT "Game initialization failed\n"
+# define ERROR_NO_ARG "No arguments"
+# define ERROR_COL_ROW "Map has less than 3 rows and/or 3 columns\n"
+# define ERROR_EXIT "You must have exactly one exit\n"
+# define ERROR_PLAYER "You must have exactly one player\n"
+# define ERROR_COLLECT "You need at least one collectable\n"
+# define ERROR_CHARS "Map has invalid characters.\
  Allowed characters: 0, 1, P, C, E\n"
-# define ERROR_FILE_READ "can\'t open file.\n"
-# define ERROR_PATH "map does not have a valid path\n"
-# define ERROR_MALLOC "memory allocation failed\n"
-# define ERROR_IMG_LOAD "could not load image %s\n"
+# define ERROR_FILE_READ "Can\'t open file.\n"
+# define ERROR_PATH "Map does not have a valid path\n"
+# define ERROR_IMG_LOAD "Could not load image\n"
 # define GAME_COMPLETE "Congratulations! You completed the game!\n"
 
 /* XPM Sprite Files */
-# define SPR_0	"./src/xpm/floor.xpm"
-# define SPR_1	"./src/xpm/wall.xpm"
-# define SPR_P0	"./src/xpm/hero_0.xpm"
-# define SPR_P1	"./src/xpm/hero_1.xpm"
-# define SPR_E0	"./src/xpm/exit_closed.xpm"
-# define SPR_E1	"./src/xpm/exit_open.xpm"
-# define SPR_C0	"./src/xpm/key_0.xpm"
-# define SPR_C1	"./src/xpm/key_1.xpm"
-# define SPR_C2	"./src/xpm/key_2.xpm"
-# define SPR_C3	"./src/xpm/key_3.xpm"
+# define SPR_0	"./textures/floor.xpm"
+# define SPR_1	"./textures/wall.xpm"
+# define SPR_P0	"./textures/hero_0.xpm"
+# define SPR_P1	"./textures/hero_1.xpm"
+# define SPR_E0	"./textures/exit_closed.xpm"
+# define SPR_E1	"./textures/exit_open.xpm"
+# define SPR_C0	"./textures/key_0.xpm"
+# define SPR_C1	"./textures/key_1.xpm"
+# define SPR_C2	"./textures/key_2.xpm"
+# define SPR_C3	"./textures/key_3.xpm"
 
 /* KeySyms */
 # define XK_ESCAPE		0xff1b  // ESC
