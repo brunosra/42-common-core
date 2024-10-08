@@ -6,7 +6,7 @@
 /*   By: bschwell <bschwell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 11:27:23 by bschwell          #+#    #+#             */
-/*   Updated: 2024/10/08 11:24:27 by bschwell         ###   ########.fr       */
+/*   Updated: 2024/10/08 14:15:56 by bschwell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ int	main(int argc, char **argv)
 	if (argc == 2)
 	{
 		if (ft_strnstr(argv[1], ".ber", ft_strlen(argv[1])) == NULL)
-			ft_exit_error("Map file must end with .ber!");
+			ft_exit_error(ERROR_BER);
 		map = (t_map *) ft_calloc(1, sizeof(t_map));
 		ft_create_game_map(argv[1], map);
 		if (ft_check_map(map) == 0)
 		{
 			ft_free_map(map);
-			ft_exit_error("Map has errors!");
+			ft_exit_error(ERROR_MAP);
 		}
 		else
 		{

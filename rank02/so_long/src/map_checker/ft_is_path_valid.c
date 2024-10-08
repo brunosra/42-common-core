@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_is_path_valid.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bschwell <student@42.fr>                   +#+  +:+       +#+        */
+/*   By: bschwell <bschwell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 19:39:14 by bschwell          #+#    #+#             */
-/*   Updated: 2024/10/07 15:21:17 by bschwell         ###   ########.fr       */
+/*   Updated: 2024/10/08 14:09:25 by bschwell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	ft_is_path_valid(t_map *map)
 	int		result;
 
 	tmp_map = ft_dup_map(map);
-	result = ft_flood_fill(map->p_x, map->p_y, tmp_map);
+	result = ft_flood_fill(map->p_y, map->p_x, tmp_map);
 	ft_free_map(tmp_map);
 	return (result);
 }
