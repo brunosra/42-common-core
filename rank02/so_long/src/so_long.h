@@ -6,7 +6,7 @@
 /*   By: bschwell <bschwell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 11:21:27 by bschwell          #+#    #+#             */
-/*   Updated: 2024/10/08 11:45:06 by bschwell         ###   ########.fr       */
+/*   Updated: 2024/10/08 14:13:54 by bschwell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,22 +121,22 @@ void	ft_check_won(t_game *game, int x, int y);
 void	ft_update_move_count(t_game *game);
 int		ft_check_move(t_game *game, int x, int y);
 
-# define ERROR_READ "Unsuccessfull file read\n"
-# define ERROR_RECTANGLE "Map must be a rectangle\n"
-# define ERROR_EMPTY_LINE "Map has an empty line\n"
-# define ERROR_WALLS "Map must be surrounded by walls\n"
-# define ERROR_GAME_INIT "Game initialization failed\n"
-# define ERROR_NO_ARG "No arguments"
-# define ERROR_COL_ROW "Map has less than 3 rows and/or 3 columns\n"
-# define ERROR_EXIT "You must have exactly one exit\n"
-# define ERROR_PLAYER "You must have exactly one player\n"
-# define ERROR_COLLECT "You need at least one collectable\n"
+# define ERROR_READ "Unsuccessfull file read"
+# define ERROR_RECTANGLE "Map must be a rectangle"
+# define ERROR_EMPTY_LINE "Map has an empty line"
+# define ERROR_WALLS "Map must be surrounded by walls"
+# define ERROR_COL_ROW "Map has less than 3 rows and/or 3 columns"
+# define ERROR_MAP "Map has errors"
+# define ERROR_EXIT "You must have exactly one exit"
+# define ERROR_PLAYER "You must have exactly one player"
+# define ERROR_COLLECT "You need at least one collectable"
 # define ERROR_CHARS "Map has invalid characters.\
- Allowed characters: 0, 1, P, C, E\n"
-# define ERROR_FILE_READ "Can\'t open file.\n"
-# define ERROR_PATH "Map does not have a valid path\n"
-# define ERROR_IMG_LOAD "Could not load image\n"
-# define GAME_COMPLETE "Congratulations! You completed the game!\n"
+ Allowed characters: 0, 1, P, C, E"
+# define ERROR_FILE_READ "Can\'t open file."
+# define ERROR_PATH "Map does not have a valid path"
+# define ERROR_IMG_LOAD "Could not load image"
+# define ERROR_BER "Map file must end with .ber!"
+# define GAME_COMPLETE "You won!\n"
 
 /* XPM Sprite Files */
 # define SPR_0	"./textures/floor.xpm"

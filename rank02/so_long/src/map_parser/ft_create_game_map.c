@@ -6,11 +6,17 @@
 /*   By: bschwell <bschwell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 11:02:24 by bschwell          #+#    #+#             */
-/*   Updated: 2024/10/08 11:37:17 by bschwell         ###   ########.fr       */
+/*   Updated: 2024/10/08 14:17:06 by bschwell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+
+static void	ft_free_map_and_error(t_map *map)
+{
+	ft_print_err(ERROR_READ);
+	ft_free_map_and_exit(map);
+}
 
 void	ft_create_game_map(char *file, t_map *map)
 {
@@ -25,10 +31,7 @@ void	ft_create_game_map(char *file, t_map *map)
 	fd = ft_open_map_file(file);
 	line = ft_get_next_line(fd);
 	if (fd == -1 || line == NULL)
-	{
-		ft_print_err(ERROR_READ);
-		ft_free_map_and_exit(map);
-	}
+		ft_free_map_and_error(map);
 	while (line)
 	{
 		lines_total++;

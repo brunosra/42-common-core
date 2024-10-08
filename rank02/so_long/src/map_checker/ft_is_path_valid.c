@@ -6,7 +6,7 @@
 /*   By: bschwell <bschwell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 19:39:14 by bschwell          #+#    #+#             */
-/*   Updated: 2024/10/08 12:27:25 by bschwell         ###   ########.fr       */
+/*   Updated: 2024/10/08 14:09:25 by bschwell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ static t_map	*ft_dup_map(t_map *map)
 
 int	ft_flood_fill(int x, int y, t_map *tmp_map)
 {
-	ft_printmap(tmp_map);
 	if (x < 0 || y < 0 || x >= tmp_map->h || y >= tmp_map->w)
 		return (0);
 	if (tmp_map->data[x][y] == 'E')
