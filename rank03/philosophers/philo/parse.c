@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bschwell <bschwell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bschwell <student@42.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 17:31:45 by bschwell          #+#    #+#             */
-/*   Updated: 2024/10/08 17:46:24 by bschwell         ###   ########.fr       */
+/*   Updated: 2024/10/11 10:06:20 by bschwell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,12 @@ static const char	*ft_valid_input(const char *str)
 	return (nbr);
 }
 
-static long	ft_atol(char *str)
+static long	ft_atol(const char *str)
 {
 	long	num;
 
 	num = 0;
-	str = valid_input(str);
+	str = ft_valid_input(str);
 	while (ft_is_digit(*str))
 		num = (num * 10) + (*str++ - 48);
 	if (num > INT_MAX)

@@ -6,7 +6,7 @@
 /*   By: bschwell <student@42.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 17:50:12 by bschwell          #+#    #+#             */
-/*   Updated: 2024/10/09 15:11:37 by bschwell         ###   ########.fr       */
+/*   Updated: 2024/10/11 10:15:43 by bschwell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ static void	ft_init_philo(t_table *table)
 	}
 }
 
-
 void	ft_init_data(t_table *table)
 {
 	int	i;
@@ -53,6 +52,7 @@ void	ft_init_data(t_table *table)
 	table->end_simulation = false;
 	table->all_threads_ready = false;
 	table->threads_running_nbr = 0;
+	table->start_simulation = ft_gettime(MILLISECOND);
 	table->philos = safe_malloc(sizeof(t_philo) * table->philo_nbr);
 	table->forks = safe_malloc(sizeof(t_fork) * table->philo_nbr);
 	safe_mutex_handle(&table->table_mutex, INIT);

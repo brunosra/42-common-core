@@ -95,6 +95,7 @@ typedef enum e_philo_status
 
 void		ft_error_and_quit(const char *msg);
 void		parse_input(t_table *table, char **argv);
+void		ft_init_data(t_table *table);
 void		*safe_malloc(size_t bytes);
 void		safe_mutex_handle(t_mtx *mutex,t_opcode cd);
 void		safe_thread_handle(pthread_t *thread, void *(*foo)(void *), void *data, t_opcode cd);
@@ -107,5 +108,12 @@ void		wait_all_threads(t_table *table);
 long		ft_gettime(t_time_code time_code);
 void		precise_usleep(long	usec, t_table *table);
 void		write_status(t_philo_status status, t_philo *philo, bool debug);
+void		dinner_start(t_table *table);
+void		*monitor_dinner(void *data);
+bool		all_threads_are_running(t_mtx *mutex, long *threads, long philo_nbr);
+void		increase_long(t_mtx *mutex, long *value);
+void		think(t_philo *philo, bool pre_simulation);
+void		clean(t_table *table);
+void		de_synchronize_philos(t_philo *philo);
 
 #endif
