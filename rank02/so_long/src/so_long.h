@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bschwell <bschwell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bschwell <student@42.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 11:21:27 by bschwell          #+#    #+#             */
-/*   Updated: 2024/10/08 14:13:54 by bschwell         ###   ########.fr       */
+/*   Updated: 2024/10/11 08:28:15 by bschwell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ int		ft_is_map_surrounded_by_walls(t_map *map);
 int		ft_is_map_rect(t_map *map);
 int		ft_is_path_valid(t_map *map);
 int		ft_is_specials(t_map *map);
+int		ft_is_map_acceptable(t_map *map);
 int		ft_check_map(t_map *map);
 
 /* Cleaners */
