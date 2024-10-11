@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check_map.c                                     :+:      :+:    :+:   */
+/*   ft_is_map_acceptable.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bschwell <student@42.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/16 23:10:39 by bschwell          #+#    #+#             */
-/*   Updated: 2024/10/11 08:30:53 by bschwell         ###   ########.fr       */
+/*   Created: 2024/09/16 23:08:37 by bschwell          #+#    #+#             */
+/*   Updated: 2024/10/11 08:37:08 by bschwell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-int	ft_check_map(t_map *map)
+int	ft_is_map_acceptable(t_map *map)
 {
-	if (ft_is_map_not_empty(map) == 0 || ft_is_map_rect(map) == 0 ||
-		ft_is_map_surrounded_by_walls(map) == 0 || ft_is_exit(map) == 0 ||
-		ft_is_start(map) == 0 || ft_is_specials(map) == 0 ||
-		ft_is_path_valid(map) == 0 || ft_is_map_acceptable(map) == 0)
-		return (0);
+	int	i;
+	int	j;
+	// int	c;
+
+	i = -1;
+	// c = 0;
+	while (++i < map->h)
+	{
+		j = -1;
+		while (++j < map->w)
+			if (map->data[i][j] != '1' && map->data[i][j] != '0' &&
+				map->data[i][j] != 'P' && map->data[i][j] != 'E' &&
+				map->data[i][j] != 'C')
+					return (0);
+	}		
 	return (1);
 }

@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check_map.c                                     :+:      :+:    :+:   */
+/*   synchro_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bschwell <student@42.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/16 23:10:39 by bschwell          #+#    #+#             */
-/*   Updated: 2024/10/11 08:30:53 by bschwell         ###   ########.fr       */
+/*   Created: 2024/10/09 11:41:02 by bschwell          #+#    #+#             */
+/*   Updated: 2024/10/09 11:42:46 by bschwell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "philo.h"
 
-int	ft_check_map(t_map *map)
+void	wait_all_threads(t_table *table)
 {
-	if (ft_is_map_not_empty(map) == 0 || ft_is_map_rect(map) == 0 ||
-		ft_is_map_surrounded_by_walls(map) == 0 || ft_is_exit(map) == 0 ||
-		ft_is_start(map) == 0 || ft_is_specials(map) == 0 ||
-		ft_is_path_valid(map) == 0 || ft_is_map_acceptable(map) == 0)
-		return (0);
-	return (1);
+	while (ft_get_bool(&table->table_mutex, &table->all_threads_ready))
+		;
+}
+
+bool	all_threads_are_running()
+{
+	
 }
