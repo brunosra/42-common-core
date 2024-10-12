@@ -6,7 +6,7 @@
 /*   By: bschwell <student@42.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 17:31:57 by bschwell          #+#    #+#             */
-/*   Updated: 2024/10/09 11:18:23 by bschwell         ###   ########.fr       */
+/*   Updated: 2024/10/11 09:28:53 by bschwell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,9 @@ int main(int argc, char **argv)
 		//creating all philos, forks, etc.
 		ft_init_data(&table);
 		//start simulation
+		dinner_start(&table);
 		//clean all ==> philos full or 1 philo died
+		clean(&table);
 	}
 	else
 	{

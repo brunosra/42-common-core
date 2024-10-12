@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   safe.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bschwell <bschwell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bschwell <student@42.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 17:51:52 by bschwell          #+#    #+#             */
-/*   Updated: 2024/10/08 19:00:49 by bschwell         ###   ########.fr       */
+/*   Updated: 2024/10/11 10:02:04 by bschwell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,6 @@ void	safe_thread_handle(pthread_t *thread, void *(*foo)(void *), void *data, t_o
 		handle_thread_error(pthread_join(*thread, NULL), cd);
 	else if (cd == DETACH)
 		handle_thread_error(pthread_detach(*thread), cd);
-	else if (cd == DESTROY)
-		handle_thread_error(pthread_mutex_destroy(mutex), cd);
 	else
 		ft_error_and_quit("[ERROR] "RST"Wrong opcode for thread handle: use <CREATE> <JOIN> <DETACH>");
 }

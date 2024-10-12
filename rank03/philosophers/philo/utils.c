@@ -6,7 +6,7 @@
 /*   By: bschwell <student@42.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 17:45:29 by bschwell          #+#    #+#             */
-/*   Updated: 2024/10/09 12:47:56 by bschwell         ###   ########.fr       */
+/*   Updated: 2024/10/11 10:02:22 by bschwell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	precise_usleep(long	usec, t_table *table)
 	{
 		if (ft_is_simulation_finished(table))
 			break;
-		elapsed = gettime(MICROSECOND) - start;
+		elapsed = ft_gettime(MICROSECOND) - start;
 		rem = usec - elapsed;
 
 		if (rem > 1e3)
@@ -57,4 +57,21 @@ long	ft_gettime(t_time_code time_code)
 	else
 		ft_error_and_quit("Wrong input gettime");
 	return (1337);
+}
+
+void	clean(t_table *table)
+{
+	t_philo	*philo;
+	int		i;
+
+	i = -1;
+	while (++i < table->philo_nbr)
+	{
+		philo = table->philos + i;
+		safe_mutex_handle(&philo->philo_mutex, DESTROY);
+	}
+	safe_mutex_handle(&table->write_mutex, DESTROY);
+	safe_mutex_handle(&table->table_mutex, DESTROY);
+	free(table->forks);
+	free(table->philos);
 }

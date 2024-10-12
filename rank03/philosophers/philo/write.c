@@ -6,11 +6,11 @@
 /*   By: bschwell <student@42.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 12:48:41 by bschwell          #+#    #+#             */
-/*   Updated: 2024/10/09 13:53:00 by bschwell         ###   ########.fr       */
+/*   Updated: 2024/10/11 10:20:47 by bschwell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h";
+#include "philo.h"
 
 static void	write_status_debug(t_philo_status status, t_philo *philo, long elapsed)
 {
@@ -19,7 +19,7 @@ static void	write_status_debug(t_philo_status status, t_philo *philo, long elaps
 	if (status == TAKE_SECOND_FORK && !ft_is_simulation_finished(philo->table))
 		printf(WH"%-6ld"RST" %d has taken the 2nd fork 2️⃣🍴[%d] \n", elapsed, philo->id, philo->second_fork->fork_id);
 	else if (status == EATING && !ft_is_simulation_finished(philo->table))
-		printf(WH"%-6ld"RST" %d is eating 🍝 [%d] \n", elapsed, philo->id, philo->meals_c);
+		printf(WH"%-6ld"RST" %d is eating 🍝 [%ld] \n", elapsed, philo->id, philo->meals_c);
 	else if (status == SLEEPING && !ft_is_simulation_finished(philo->table))
 		printf(WH"%-6ld"RST" %d is sleeping 😴 \n", elapsed, philo->id);
 	else if (status == THINKING && !ft_is_simulation_finished(philo->table))
@@ -42,15 +42,15 @@ void	write_status(t_philo_status status, t_philo *philo, bool debug)
 	{
 		if ((status == TAKE_FIRST_FORK || status == TAKE_SECOND_FORK)
 			&& !ft_is_simulation_finished(philo->table))
-			printf(WH"%-6ld"RST" %d has taken a fork \n", elapsed, philo->id);
+			printf(MG"%-6ld"RST" %d has taken a fork\n", elapsed, philo->id);
 		else if (status == EATING && !ft_is_simulation_finished(philo->table))
-			printf(WH"%-6ld"RST" %d is eating \n", elapsed, philo->id);
+			printf(YL"%-6ld"RST" %d is eating\n", elapsed, philo->id);
 		else if (status == SLEEPING && !ft_is_simulation_finished(philo->table))
-			printf(WH"%-6ld"RST" %d is sleeping \n", elapsed, philo->id);
+			printf(BL"%-6ld"RST" %d is sleeping\n", elapsed, philo->id);
 		else if (status == THINKING && !ft_is_simulation_finished(philo->table))
-			printf(WH"%-6ld"RST" %d is thinking \n", elapsed, philo->id);
+			printf(GR"%-6ld"RST" %d is thinking\n", elapsed, philo->id);
 		else if (status == DEAD)
-			printf(RD"%-6ld %d is dead \n"RST, elapsed, philo->id);
+			printf(RD"%-6ld %d died\n"RST, elapsed, philo->id);
 	}
 	safe_mutex_handle(&philo->table->write_mutex, UNLOCK);
 }
