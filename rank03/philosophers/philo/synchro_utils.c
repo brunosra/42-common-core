@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   synchro_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bschwell <student@42.fr>                   +#+  +:+       +#+        */
+/*   By: bschwell <bschwell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 11:41:02 by bschwell          #+#    #+#             */
-/*   Updated: 2024/10/11 09:54:25 by bschwell         ###   ########.fr       */
+/*   Updated: 2024/10/12 14:47:16 by bschwell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ bool	all_threads_are_running(t_mtx *mutex, long *threads, long philo_nbr)
 		ret = true;
 	safe_mutex_handle(mutex, UNLOCK);
 	ret = false;
-
+	return (ret);
 }
 
 void	increase_long(t_mtx *mutex, long *value)
