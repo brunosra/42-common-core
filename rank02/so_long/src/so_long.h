@@ -6,7 +6,7 @@
 /*   By: bschwell <student@42.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 11:21:27 by bschwell          #+#    #+#             */
-/*   Updated: 2024/10/11 08:28:15 by bschwell         ###   ########.fr       */
+/*   Updated: 2024/10/16 14:48:15 by bschwell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,7 +137,7 @@ int		ft_check_move(t_game *game, int x, int y);
 # define ERROR_PATH "Map does not have a valid path"
 # define ERROR_IMG_LOAD "Could not load image"
 # define ERROR_BER "Map file must end with .ber!"
-# define GAME_COMPLETE "You won!\n"
+# define GAME_COMPLETE "You won!"
 
 /* XPM Sprite Files */
 # define SPR_0	"./textures/floor.xpm"
