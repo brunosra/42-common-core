@@ -6,7 +6,7 @@
 /*   By: bschwell <student@42.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 11:19:02 by bschwell          #+#    #+#             */
-/*   Updated: 2024/10/11 09:59:25 by bschwell         ###   ########.fr       */
+/*   Updated: 2024/10/15 10:21:14 by bschwell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ void	*dinner_simulation(void *data)
 		precise_usleep(philo->table->time_to_sleep, philo->table);
 		think(philo, false);
 	}
+	return (NULL);
 }
 
 void	dinner_start(t_table *table)
