@@ -6,7 +6,7 @@
 /*   By: bschwell <student@42.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 23:06:26 by bschwell          #+#    #+#             */
-/*   Updated: 2024/10/07 11:28:54 by bschwell         ###   ########.fr       */
+/*   Updated: 2024/10/16 14:46:35 by bschwell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int	ft_is_map_surrounded_by_walls(t_map *map)
 		j = 0;
 		while (j < map->w)
 		{
+			if (map->data[i] == NULL || ft_strlen(map->data[i]))
+				return (0);
 			if (i == 0 || i == (map->h - 1))
 			{
 				if (map->data[i][j] != '1')
