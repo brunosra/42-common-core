@@ -81,7 +81,7 @@ typedef enum e_time_code
 	MICROSECOND,
 }	t_time_code;
 
-# define DEBUG_MODE 0
+# define DEBUG_MODE 1
 
 typedef enum e_philo_status
 {
