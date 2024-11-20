@@ -10,6 +10,7 @@ SRCS = 	*.c
 ###################
 OBJS = $(SRCS:.c=.o)
 CC = cc
+# CFLAGS = -Wall -Werror -Wextra -g -fsanitize=address -fsanitize=undefined
 CFLAGS = -Wall -Werror -Wextra -g
 RM = rm -f
 
