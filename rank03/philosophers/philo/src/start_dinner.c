@@ -6,7 +6,7 @@
 /*   By: bschwell <student@42.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 20:10:41 by bschwell          #+#    #+#             */
-/*   Updated: 2024/11/21 20:10:43 by bschwell         ###   ########.fr       */
+/*   Updated: 2024/11/21 20:16:20 by bschwell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ void	*ft_start_dinner(void *data)
 	pthread_mutex_unlock(&table->start_mtx);
 	if ((!(philo->id % 2)) || (table->n_philo % 2 && table->n_philo > 1
 			&& philo->id == 1))
-		ft_sleep_for_action(philo, philo->table->time_to_eat, "is thinking", MG);
+		ft_sleep_for_action(philo, philo->table->time_to_eat,
+			"is thinking", MG);
 	while (!ft_check_end_dinner(table))
 	{
 		if (table->n_philo == 1)
@@ -84,13 +85,14 @@ void	ft_init_philo_threads(t_table *table)
 	{
 		if (pthread_create(&table->philo[i].thread, NULL,
 				ft_start_dinner, &table->philo[i]))
-			ft_handle_error("Error\npthread_create fails\n", table, 2);
+			ft_handle_error(RD"[Error]"RST"\npthread_create fails\n", table, 2);
 		i++;
 	}
 	pthread_mutex_unlock(&table->start_mtx);
 }
 
-void	ft_sleep_for_action(t_philo *philo, long long va_time_ms, char *action, char *color)
+void	ft_sleep_for_action(t_philo *philo, long long va_time_ms,
+			char *action, char *color)
 {
 	long long	start;
 
@@ -102,8 +104,8 @@ void	ft_sleep_for_action(t_philo *philo, long long va_time_ms, char *action, cha
 		return ;
 	}
 	if (*action)
-		printf("%s%lld %d %s\n"RST, color, ft_get_time() - philo->table->start_dinner,
-			philo->id, action);
+		printf("%s%lld %d %s\n"RST, color,
+			ft_get_time() - philo->table->start_dinner, philo->id, action);
 	pthread_mutex_unlock(&philo->table->print_mtx);
 	if (va_time_ms > 0)
 		while ((ft_get_time() - start < va_time_ms))

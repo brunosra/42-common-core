@@ -6,7 +6,7 @@
 /*   By: bschwell <student@42.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 20:10:31 by bschwell          #+#    #+#             */
-/*   Updated: 2024/11/21 20:10:33 by bschwell         ###   ########.fr       */
+/*   Updated: 2024/11/21 20:14:06 by bschwell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ void		ft_init_philo(t_table *table, int i);
 void		ft_init_mutexes(t_table *table);
 void		ft_parsing_philo_and_forks(t_table *table);
 void		ft_init_philo_threads(t_table *table);
-void		ft_sleep_for_action(t_philo *philo, long long va_time_ms, char *action, char*color);
+void		ft_sleep_for_action(t_philo *philo, long long va_time_ms,
+				char *action, char*color);
 void		*ft_start_dinner(void *data);
 int			ft_check_end_dinner(t_table *table);
 void		ft_start_monitor(t_table *table);
