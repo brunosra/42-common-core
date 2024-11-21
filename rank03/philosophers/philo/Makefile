@@ -1,33 +1,21 @@
-###################
-#   BASIC SETUP   #
-###################
+NAME = philo
+SRC = $(wildcard src/*.c)
 
-NAME = 	philo
-SRCS = 	*.c
-
-###################
-#   COMMON CONF   #
-###################
-OBJS = $(SRCS:.c=.o)
-CC = cc
-# CFLAGS = -Wall -Werror -Wextra -g -fsanitize=address -fsanitize=undefined
-CFLAGS = -Wall -Werror -Wextra -g
-RM = rm -f
+RM = @rm -rf
+CC = @cc -g -pthread -Wextra -Werror -Wall $(INCLUDE) #valgrind --tool=helgrind
 
 all: $(NAME)
 
-$(NAME): $(SRCS)
-	$(CC) $(CFLAGS) $(SRCS) -o $(NAME)
-
-%.o: %.c
-	$(CC) $(CFLAGS) $< -o $@
+$(NAME): $(SRC)
+	$(CC) $(SRC) -o $(NAME)
 
 clean:
-	$(RM) $(OBJS)
+	$(RM) $(NAME)
 
 fclean: clean
 	$(RM) $(NAME)
 
-re:	fclean all
+re: fclean
+	$(MAKE) all
 
 .PHONY: all clean fclean re
