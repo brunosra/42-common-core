@@ -6,7 +6,7 @@
 /*   By: bschwell <student@42.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 20:10:31 by bschwell          #+#    #+#             */
-/*   Updated: 2024/11/21 20:14:06 by bschwell         ###   ########.fr       */
+/*   Updated: 2024/11/21 20:46:27 by bschwell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,15 +51,15 @@ typedef struct s_table
 	t_mtx		print_mtx;
 }				t_table;
 
-void		ft_handle_error(char *str, t_table *table, int error_stage);
+int		ft_handle_error(char *str, t_table *table, int error_stage);
 int			ft_atoi(const char *ptr);
 long long	ft_atoll(char *str, int i, long long res);
 long long	ft_get_time(void);
 int			ft_parsing_args_to_table(t_table *table, char **argv);
-void		ft_init_philo(t_table *table, int i);
-void		ft_init_mutexes(t_table *table);
-void		ft_parsing_philo_and_forks(t_table *table);
-void		ft_init_philo_threads(t_table *table);
+int		ft_init_philo(t_table *table, int i);
+int		ft_init_mutexes(t_table *table);
+int		ft_parsing_philo_and_forks(t_table *table);
+int		ft_init_philo_threads(t_table *table);
 void		ft_sleep_for_action(t_philo *philo, long long va_time_ms,
 				char *action, char*color);
 void		*ft_start_dinner(void *data);

@@ -6,7 +6,7 @@
 /*   By: bschwell <student@42.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 20:11:10 by bschwell          #+#    #+#             */
-/*   Updated: 2024/11/21 20:20:15 by bschwell         ###   ########.fr       */
+/*   Updated: 2024/11/21 20:43:32 by bschwell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,10 @@ static void	ft_cleanup(t_table *table, int error_stage)
 			if (error_stage >= 3)
 			{
 				if (pthread_join(table->philo[i].thread, NULL))
+				{
 					ft_handle_error("Failed to join thread", table, 2);
+					return ;
+				}
 			}
 		}
 		free(table->philo);
@@ -56,11 +59,12 @@ static void	ft_cleanup(t_table *table, int error_stage)
 		ft_destroy_mutexes(table, error_stage);
 }
 
-void	ft_handle_error(char *str, t_table *table, int error_stage)
+int	ft_handle_error(char *str, t_table *table, int error_stage)
 {
 	if (str != NULL)
 		printf(RD"[ERROR]: "RST"%s\n", str);
 	if (error_stage)
 		ft_cleanup(table, error_stage);
-	exit(1);
+	return (0);
+	// exit(1);
 }

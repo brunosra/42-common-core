@@ -6,7 +6,7 @@
 /*   By: bschwell <student@42.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 20:10:41 by bschwell          #+#    #+#             */
-/*   Updated: 2024/11/21 20:16:20 by bschwell         ###   ########.fr       */
+/*   Updated: 2024/11/21 20:46:45 by bschwell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	*ft_start_dinner(void *data)
 	return (NULL);
 }
 
-void	ft_init_philo_threads(t_table *table)
+int	ft_init_philo_threads(t_table *table)
 {
 	int	i;
 
@@ -85,10 +85,11 @@ void	ft_init_philo_threads(t_table *table)
 	{
 		if (pthread_create(&table->philo[i].thread, NULL,
 				ft_start_dinner, &table->philo[i]))
-			ft_handle_error(RD"[Error]"RST"\npthread_create fails\n", table, 2);
+			return (ft_handle_error("pthread_create fails\n", table, 2));
 		i++;
 	}
 	pthread_mutex_unlock(&table->start_mtx);
+	return (1);
 }
 
 void	ft_sleep_for_action(t_philo *philo, long long va_time_ms,
