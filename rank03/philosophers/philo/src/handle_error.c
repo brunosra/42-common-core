@@ -6,7 +6,7 @@
 /*   By: bschwell <student@42.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 20:11:10 by bschwell          #+#    #+#             */
-/*   Updated: 2024/11/21 20:43:32 by bschwell         ###   ########.fr       */
+/*   Updated: 2024/11/21 20:55:56 by bschwell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,4 @@ int	ft_handle_error(char *str, t_table *table, int error_stage)
 	if (error_stage)
 		ft_cleanup(table, error_stage);
 	return (0);
-	// exit(1);
 }
