@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   start_dinner.c                                      :+:      :+:    :+:   */
+/*   start_dinner.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bschwell <student@42.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/21 19:16:55 by tcosta-f          #+#    #+#             */
-/*   Updated: 2024/11/21 19:02:57 by bschwell         ###   ########.fr       */
+/*   Created: 2024/11/21 20:10:41 by bschwell          #+#    #+#             */
+/*   Updated: 2024/11/21 20:10:43 by bschwell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ static void	ft_dinner(t_philo *philo)
 		pthread_mutex_lock(&table->forks[philo->left_fork]);
 		pthread_mutex_lock(&table->forks[philo->right_fork]);
 	}
-	ft_sleep_for_action(philo, 0, "has taken a fork");
-	ft_sleep_for_action(philo, 0, "has taken a fork");
-	ft_sleep_for_action(philo, table->time_to_eat, "is eating");
+	ft_sleep_for_action(philo, 0, "has taken a fork", YL);
+	ft_sleep_for_action(philo, 0, "has taken a fork", YL);
+	ft_sleep_for_action(philo, table->time_to_eat, "is eating", BL);
 	pthread_mutex_lock(&table->eat_mtx);
 	philo->time_last_meal = ft_get_time();
 	philo->count_meals++;
@@ -40,13 +40,13 @@ static void	ft_dinner(t_philo *philo)
 
 static void	ft_handle_sleep(t_philo *philo, t_table *table)
 {
-	ft_sleep_for_action(philo, table->time_to_sleep, "is sleeping");
+	ft_sleep_for_action(philo, table->time_to_sleep, "is sleeping", GR);
 	if (table->n_philo % 2)
-		ft_sleep_for_action(philo, table->time_to_eat, "is thinking");
+		ft_sleep_for_action(philo, table->time_to_eat, "is thinking", MG);
 	else
 		ft_sleep_for_action(philo, (table->time_to_die
 				- (table->time_to_eat + table->time_to_sleep
-					+ table->n_philo)), "is thinking");
+					+ table->n_philo)), "is thinking", MG);
 }
 
 void	*ft_start_dinner(void *data)
@@ -60,12 +60,12 @@ void	*ft_start_dinner(void *data)
 	pthread_mutex_unlock(&table->start_mtx);
 	if ((!(philo->id % 2)) || (table->n_philo % 2 && table->n_philo > 1
 			&& philo->id == 1))
-		ft_sleep_for_action(philo, philo->table->time_to_eat, "is thinking");
+		ft_sleep_for_action(philo, philo->table->time_to_eat, "is thinking", MG);
 	while (!ft_check_end_dinner(table))
 	{
 		if (table->n_philo == 1)
 		{
-			ft_sleep_for_action(philo, 0, "has taken a fork");
+			ft_sleep_for_action(philo, 0, "has taken a fork", YL);
 			break ;
 		}
 		ft_dinner(philo);
@@ -90,7 +90,7 @@ void	ft_init_philo_threads(t_table *table)
 	pthread_mutex_unlock(&table->start_mtx);
 }
 
-void	ft_sleep_for_action(t_philo *philo, long long va_time_ms, char *action)
+void	ft_sleep_for_action(t_philo *philo, long long va_time_ms, char *action, char *color)
 {
 	long long	start;
 
@@ -102,7 +102,7 @@ void	ft_sleep_for_action(t_philo *philo, long long va_time_ms, char *action)
 		return ;
 	}
 	if (*action)
-		printf("%lld %d %s\n", ft_get_time() - philo->table->start_dinner,
+		printf("%s%lld %d %s\n"RST, color, ft_get_time() - philo->table->start_dinner,
 			philo->id, action);
 	pthread_mutex_unlock(&philo->table->print_mtx);
 	if (va_time_ms > 0)

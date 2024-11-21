@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bschwell <student@42.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/21 19:22:23 by tcosta-f          #+#    #+#             */
-/*   Updated: 2024/11/21 19:47:57 by bschwell         ###   ########.fr       */
+/*   Created: 2024/11/21 20:10:49 by bschwell          #+#    #+#             */
+/*   Updated: 2024/11/21 20:10:50 by bschwell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static int	ft_check_philo_status(t_philo *philo)
 	now_time = ft_get_time();
 	if (now_time - philo->time_last_meal >= table->time_to_die)
 	{
-		ft_sleep_for_action(philo, 0, "died");
+		ft_sleep_for_action(philo, 0, "died", BD);
 		pthread_mutex_unlock(&table->eat_mtx);
 		pthread_mutex_lock(&table->end_mtx);
 		table->end_dinner = 1;
