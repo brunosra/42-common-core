@@ -6,7 +6,7 @@
 /*   By: bschwell <student@42.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 20:10:49 by bschwell          #+#    #+#             */
-/*   Updated: 2024/11/21 20:10:50 by bschwell         ###   ########.fr       */
+/*   Updated: 2024/11/21 21:03:44 by bschwell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ static int	ft_check_philo_full(t_philo *philo)
 	{
 		pthread_mutex_unlock(&table->eat_mtx);
 		pthread_mutex_lock(&table->end_mtx);
-		table->n_philos_full++;
-		if (table->n_philos_full >= table->n_philo)
+		table->nbr_philos_full++;
+		if (table->nbr_philos_full >= table->nbr_philos)
 		{
 			table->end_dinner = 1;
 			result = 1;
@@ -47,7 +47,7 @@ static int	ft_check_philo_status(t_philo *philo)
 	now_time = ft_get_time();
 	if (now_time - philo->time_last_meal >= table->time_to_die)
 	{
-		ft_sleep_for_action(philo, 0, "died", BD);
+		ft_sleep_for_action(philo, 0, "died", RD);
 		pthread_mutex_unlock(&table->eat_mtx);
 		pthread_mutex_lock(&table->end_mtx);
 		table->end_dinner = 1;
@@ -69,8 +69,8 @@ void	ft_start_monitor(t_table *table)
 	while (monitor)
 	{
 		i = 0;
-		table->n_philos_full = 0;
-		while (i < table->n_philo)
+		table->nbr_philos_full = 0;
+		while (i < table->nbr_philos)
 		{
 			if (monitor && ft_check_philo_status(&table->philo[i]))
 			{

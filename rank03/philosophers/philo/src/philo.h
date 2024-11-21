@@ -6,7 +6,7 @@
 /*   By: bschwell <student@42.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 20:10:31 by bschwell          #+#    #+#             */
-/*   Updated: 2024/11/21 20:55:47 by bschwell         ###   ########.fr       */
+/*   Updated: 2024/11/21 20:59:23 by bschwell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,14 @@ typedef struct s_philo
 typedef struct s_table
 {
 	t_philo		*philo;
-	int			n_philo;
+	int			nbr_philos;
 	long long	time_to_die;
 	long long	time_to_eat;
 	long long	time_to_sleep;
 	long long	n_meals;
 	int			end_dinner;
 	long long	start_dinner;
-	int			n_philos_full;
+	int			nbr_philos_full;
 	t_mtx		*forks;
 	t_mtx		start_mtx;
 	t_mtx		eat_mtx;
@@ -51,7 +51,7 @@ typedef struct s_table
 	t_mtx		print_mtx;
 }				t_table;
 
-int			ft_handle_error(char *str, t_table *table, int error_stage);
+int			ft_throw_error(char *str, t_table *table, int error_stage);
 int			ft_atoi(const char *ptr);
 long long	ft_atoll(char *str, int i, long long res);
 long long	ft_get_time(void);

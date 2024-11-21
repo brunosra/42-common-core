@@ -6,7 +6,7 @@
 /*   By: bschwell <student@42.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 20:11:27 by bschwell          #+#    #+#             */
-/*   Updated: 2024/11/21 20:44:30 by bschwell         ###   ########.fr       */
+/*   Updated: 2024/11/21 20:56:44 by bschwell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	main(int argc, char **argv)
 	t_table	table;
 
 	if (argc != 5 && argc != 6)
-		ft_handle_error("Usage: <philos_nbr> "
+		ft_throw_error("Usage: <philos_nbr> "
 			"<time_to_die> <time_to_eat> <time_to_sleep> "
 			"[meals_nbr]\n", NULL, 0);
 	if (ft_parsing_args_to_table(&table, argv) == 0)
@@ -27,6 +27,6 @@ int	main(int argc, char **argv)
 	if (ft_init_philo_threads(&table) == 0)
 		return (4);
 	ft_start_monitor(&table);
-	ft_handle_error(NULL, &table, 3);
+	ft_throw_error(NULL, &table, 3);
 	return (1);
 }

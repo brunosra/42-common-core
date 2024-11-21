@@ -6,7 +6,7 @@
 /*   By: bschwell <student@42.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 20:10:41 by bschwell          #+#    #+#             */
-/*   Updated: 2024/11/21 20:46:45 by bschwell         ###   ########.fr       */
+/*   Updated: 2024/11/21 20:59:10 by bschwell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,12 @@ static void	ft_dinner(t_philo *philo)
 static void	ft_handle_sleep(t_philo *philo, t_table *table)
 {
 	ft_sleep_for_action(philo, table->time_to_sleep, "is sleeping", GR);
-	if (table->n_philo % 2)
+	if (table->nbr_philos % 2)
 		ft_sleep_for_action(philo, table->time_to_eat, "is thinking", MG);
 	else
 		ft_sleep_for_action(philo, (table->time_to_die
 				- (table->time_to_eat + table->time_to_sleep
-					+ table->n_philo)), "is thinking", MG);
+					+ table->nbr_philos)), "is thinking", MG);
 }
 
 void	*ft_start_dinner(void *data)
@@ -58,13 +58,13 @@ void	*ft_start_dinner(void *data)
 	table = philo->table;
 	pthread_mutex_lock(&table->start_mtx);
 	pthread_mutex_unlock(&table->start_mtx);
-	if ((!(philo->id % 2)) || (table->n_philo % 2 && table->n_philo > 1
+	if ((!(philo->id % 2)) || (table->nbr_philos % 2 && table->nbr_philos > 1
 			&& philo->id == 1))
 		ft_sleep_for_action(philo, philo->table->time_to_eat,
 			"is thinking", MG);
 	while (!ft_check_end_dinner(table))
 	{
-		if (table->n_philo == 1)
+		if (table->nbr_philos == 1)
 		{
 			ft_sleep_for_action(philo, 0, "has taken a fork", YL);
 			break ;
@@ -81,11 +81,11 @@ int	ft_init_philo_threads(t_table *table)
 
 	i = 0;
 	pthread_mutex_lock(&table->start_mtx);
-	while (i < table->n_philo)
+	while (i < table->nbr_philos)
 	{
 		if (pthread_create(&table->philo[i].thread, NULL,
 				ft_start_dinner, &table->philo[i]))
-			return (ft_handle_error("pthread_create fails\n", table, 2));
+			return (ft_throw_error("pthread_create fails\n", table, 2));
 		i++;
 	}
 	pthread_mutex_unlock(&table->start_mtx);

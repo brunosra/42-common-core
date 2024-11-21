@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_error.c                                     :+:      :+:    :+:   */
+/*   throw_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bschwell <student@42.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 20:11:10 by bschwell          #+#    #+#             */
-/*   Updated: 2024/11/21 20:55:56 by bschwell         ###   ########.fr       */
+/*   Updated: 2024/11/21 20:59:10 by bschwell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	ft_destroy_mutexes(t_table *table, int error_stage)
 	i = 0;
 	if (error_stage >= 2 && table->forks)
 	{
-		while (i < table->n_philo)
+		while (i < table->nbr_philos)
 		{
 			pthread_mutex_destroy(&table->forks[i]);
 			i++;
@@ -42,13 +42,13 @@ static void	ft_cleanup(t_table *table, int error_stage)
 	i = -1;
 	if (error_stage >= 1 && table->philo)
 	{
-		while (++i < table->n_philo)
+		while (++i < table->nbr_philos)
 		{
 			if (error_stage >= 3)
 			{
 				if (pthread_join(table->philo[i].thread, NULL))
 				{
-					ft_handle_error("Failed to join thread", table, 2);
+					ft_throw_error("Failed to join thread", table, 2);
 					return ;
 				}
 			}
@@ -59,7 +59,7 @@ static void	ft_cleanup(t_table *table, int error_stage)
 		ft_destroy_mutexes(table, error_stage);
 }
 
-int	ft_handle_error(char *str, t_table *table, int error_stage)
+int	ft_throw_error(char *str, t_table *table, int error_stage)
 {
 	if (str != NULL)
 		printf(RD"[ERROR]: "RST"%s\n", str);
