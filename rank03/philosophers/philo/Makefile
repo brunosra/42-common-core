@@ -2,7 +2,7 @@ NAME = philo
 SRC = $(wildcard src/*.c)
 
 RM = @rm -rf
-CC = @cc -g -pthread -Wextra -Werror -Wall $(INCLUDE) #valgrind --tool=helgrind
+CC = @cc -g -pthread -Wextra -Werror -Wall 
 
 all: $(NAME)
 
