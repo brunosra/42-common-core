@@ -6,7 +6,7 @@
 /*   By: bschwell <student@42.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 20:10:41 by bschwell          #+#    #+#             */
-/*   Updated: 2024/11/21 20:59:10 by bschwell         ###   ########.fr       */
+/*   Updated: 2024/11/24 11:57:39 by bschwell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	*ft_start_dinner(void *data)
 			&& philo->id == 1))
 		ft_sleep_for_action(philo, philo->table->time_to_eat,
 			"is thinking", MG);
-	while (!ft_check_end_dinner(table))
+	while (!ft_is_dinner_over(table))
 	{
 		if (table->nbr_philos == 1)
 		{
@@ -99,7 +99,7 @@ void	ft_sleep_for_action(t_philo *philo, long long va_time_ms,
 
 	start = ft_get_time();
 	pthread_mutex_lock(&philo->table->print_mtx);
-	if (ft_check_end_dinner(philo->table))
+	if (ft_is_dinner_over(philo->table))
 	{
 		pthread_mutex_unlock(&philo->table->print_mtx);
 		return ;

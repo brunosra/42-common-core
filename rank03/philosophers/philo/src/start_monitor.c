@@ -6,7 +6,7 @@
 /*   By: bschwell <student@42.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 20:10:49 by bschwell          #+#    #+#             */
-/*   Updated: 2024/11/21 21:03:44 by bschwell         ###   ########.fr       */
+/*   Updated: 2024/11/24 11:57:39 by bschwell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	ft_check_philo_full(t_philo *philo)
 	table = philo->table;
 	result = 0;
 	pthread_mutex_lock(&table->eat_mtx);
-	if (table->n_meals != -1 && philo->count_meals >= table->n_meals)
+	if (table->nbr_meals != -1 && philo->count_meals >= table->nbr_meals)
 	{
 		pthread_mutex_unlock(&table->eat_mtx);
 		pthread_mutex_lock(&table->end_mtx);
@@ -83,7 +83,7 @@ void	ft_start_monitor(t_table *table)
 	}
 }
 
-int	ft_check_end_dinner(t_table *table)
+int	ft_is_dinner_over(t_table *table)
 {
 	int	ended;
 

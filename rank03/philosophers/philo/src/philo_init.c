@@ -6,13 +6,13 @@
 /*   By: bschwell <student@42.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 20:11:38 by bschwell          #+#    #+#             */
-/*   Updated: 2024/11/21 20:59:23 by bschwell         ###   ########.fr       */
+/*   Updated: 2024/11/24 11:59:19 by bschwell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	ft_parsing_args_to_table(t_table *table, char **argv)
+int	ft_parse_args_to_table(t_table *table, char **argv)
 {
 	table->nbr_philos = ft_atoi(argv[1]);
 	table->time_to_die = ft_atoll(argv[2], 0, 0);
@@ -23,12 +23,12 @@ int	ft_parsing_args_to_table(t_table *table, char **argv)
 		return (ft_throw_error("Try values bigger than 0!\n", NULL, 0));
 	if (argv[5])
 	{
-		table->n_meals = ft_atoll(argv[5], 0, 0);
-		if (table->n_meals <= 0)
+		table->nbr_meals = ft_atoll(argv[5], 0, 0);
+		if (table->nbr_meals <= 0)
 			return (ft_throw_error("Try values bigger than 0!\n", NULL, 0));
 	}
 	else
-		table->n_meals = -1;
+		table->nbr_meals = -1;
 	table->nbr_philos_full = 0;
 	table->start_dinner = ft_get_time();
 	table->end_dinner = 0;
@@ -37,7 +37,7 @@ int	ft_parsing_args_to_table(t_table *table, char **argv)
 	return (1);
 }
 
-int	ft_init_philo(t_table *table, int i)
+int	ft_init_philos_n_forks(t_table *table, int i)
 {
 	table->philo[i].id = i + 1;
 	table->philo[i].right_fork = i;
@@ -63,7 +63,7 @@ int	ft_init_mutexes(t_table *table)
 	return (1);
 }
 
-int	ft_parsing_philo_and_forks(t_table *table)
+int	ft_parse_philo_and_forks(t_table *table)
 {
 	int	i;
 
@@ -76,7 +76,7 @@ int	ft_parsing_philo_and_forks(t_table *table)
 		return (ft_throw_error("malloc fails\n", table, 1));
 	while (i < table->nbr_philos)
 	{
-		ft_init_philo(table, i);
+		ft_init_philos_n_forks(table, i);
 		i++;
 	}
 	return (ft_init_mutexes(table));
