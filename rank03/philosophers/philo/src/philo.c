@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bschwell <student@42.fr>                   +#+  +:+       +#+        */
+/*   By: bschwell <bschwell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 20:11:27 by bschwell          #+#    #+#             */
-/*   Updated: 2024/11/24 11:59:21 by bschwell         ###   ########.fr       */
+/*   Updated: 2024/11/24 13:45:05 by bschwell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ int	main(int argc, char **argv)
 
 	if (argc != 5 && argc != 6)
 	{
-		ft_throw_error("Usage: <philos_nbr> "
-			"<time_to_die> <time_to_eat> <time_to_sleep> "
+		ft_throw_error("Usage: philos_nbr "
+			"time_to_die time_to_eat time_to_sleep "
 			"[meals_nbr]", NULL, 0);
 		return (0);
 	}
